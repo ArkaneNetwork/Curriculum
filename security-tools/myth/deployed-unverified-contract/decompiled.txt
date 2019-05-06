@@ -1,0 +1,45 @@
+#
+#  Eveem.org 26 Apr 2019
+#  Decompiled source of 0x768f3b7538C0285142D86e0A692A086b0f091d3F
+#
+#  Let's make the world open source
+#
+
+def storage:
+  stor0 is addr at storage 0
+
+def _fallback() payable: # default function
+  stop
+
+
+def changeOwner(address _newOwner): # not payable
+  if stor0 != caller:
+      revert with 0, 'owner  required.'
+  stor0 = _newOwner
+
+
+def sendEth(address _receiver, uint256 _amount): # not payable
+  call _receiver with:
+     value _amount wei
+       gas 2300 * is_zero(value) wei
+  if not ext_call.success:
+      revert with ext_call.return_data[0 len return_data.size]
+
+
+def unknown51d0eac4(array _param1, array _param2): # not payable
+  mem[128 len 32 * _param1.length] = call.data[_param1 + 36 len 32 * _param1.length]
+  mem[(32 * _param1.length) + 128] = _param2.length
+  mem[(32 * _param1.length) + 160 len 32 * _param2.length] = call.data[_param2 + 36 len 32 * _param2.length]
+  if stor0 != caller:
+      revert with 0, 'owner  required.'
+  idx = 0
+  while idx < _param1.length:
+      require idx < _param1.length
+      require idx < _param2.length
+      call mem[(32 * idx) + 140 len 20] with:
+         value mem[(32 * idx) + (32 * _param1.length) + 160] wei
+           gas 2300 * is_zero(value) wei
+      if not ext_call.success:
+          revert with ext_call.return_data[0 len return_data.size]
+      idx = idx + 1
+      continue
