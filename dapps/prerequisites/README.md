@@ -23,4 +23,4 @@ https://metamask.io/
 
 https://kovan.etherscan.io/
 
-https://github.com/kovan-testnet/faucet
+https://faucet.kovan.network/

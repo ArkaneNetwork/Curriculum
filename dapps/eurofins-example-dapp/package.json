@@ -1,0 +1,17 @@
+{
+  "name": "eurofins-example-dapp",
+  "version": "0.0.1",
+  "description": "Eurofins Example Dapp",
+  "scripts": {
+    "test": "truffle test",
+    "coverage": "solidity-coverage"
+  },
+  "author": "Fundrequest",
+  "license": "MIT",
+  "devDependencies": {
+    "ganache-cli": "^6.0.3",
+    "truffle": "^5.0.15",
+    "truffle-hdwallet-provider": "1.0.8",
+    "dotenv": "^5.0.0"
+  }
+}
