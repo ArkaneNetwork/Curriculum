@@ -21,10 +21,10 @@ public class TransactionTest {
         System.out.println(key);
 
         Object signedTransaction = generateTransaction(key);
-        System.out.println(key);
+        System.out.println(signedTransaction);
 
         Object submittedTransaction = submitTransaction(signedTransaction);
-        System.out.println(key);
+        System.out.println(submittedTransaction);
 
         //wait for mining
         System.out.println("Waiting for transaction to be mined...");
