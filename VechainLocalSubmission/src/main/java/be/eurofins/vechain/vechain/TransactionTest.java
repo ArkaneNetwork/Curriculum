@@ -1,6 +1,9 @@
 package be.eurofins.vechain.vechain;
 
+import network.arkane.provider.secret.generation.VechainSecretKey;
 import network.arkane.provider.sign.VechainTransactionSigner;
+import network.arkane.provider.wallet.extraction.VechainPrivateKeyExtractor;
+import network.arkane.provider.wallet.extraction.request.VechainPrivateKeyExtractionRequest;
 
 public class TransactionTest {
 
@@ -17,7 +20,7 @@ public class TransactionTest {
     }
 
     public void transact() throws InterruptedException {
-        Object key = loadWallet("<your_private_key>");
+        VechainSecretKey key = loadWallet("<your_private_key>");
         System.out.println(key);
 
         Object signedTransaction = generateTransaction(key);
@@ -37,8 +40,9 @@ public class TransactionTest {
         System.out.println(receipt);
     }
 
-    private Object loadWallet(String privateKey) {
-        return null;
+    private VechainSecretKey loadWallet(String privateKey) {
+        VechainPrivateKeyExtractionRequest request = new VechainPrivateKeyExtractionRequest(privateKey);
+        return (VechainSecretKey) new VechainPrivateKeyExtractor().extract(request);
     }
 
     public Object generateTransaction(Object secretKey) {
