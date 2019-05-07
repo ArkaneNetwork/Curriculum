@@ -1,0 +1,14 @@
+{
+    "name": "eurofins-npm-example",
+    "version": "0.0.1",
+    "description": "Eurofins NPM Example",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "author": "Arkane Network",
+    "license": "MIT",
+    "devDependencies": {
+      "truffle-hdwallet-provider": "1.0.8",
+      "web3": "^0.20.6"
+    }
+  }
