@@ -15,6 +15,8 @@ import java.util.Collections;
 
 public class TransactionTest {
 
+    public static final String CHAIN_TAG = String.valueOf((byte) 39);
+    public static final String BLOCK_REF = Integer.toHexString(2721353);
     private final VechainTransactionSigner signer;
 
     public static void main(String[] args) throws InterruptedException {
