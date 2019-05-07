@@ -30,13 +30,13 @@ public class TransactionTest {
     }
 
     public void transact() throws InterruptedException {
-        VechainSecretKey key = loadWallet("<your_private_key>");
+        VechainSecretKey key = loadWallet("0x3b6b0b1741629f066b44efd7d1f8fd73955a5c8cf904ce40f281aa0a38d50489");
         System.out.println(key);
 
         TransactionSignature signedTransaction = generateTransaction(key);
         System.out.println(signedTransaction);
 
-        Object submittedTransaction = submitTransaction(signedTransaction);
+        SubmissionResult submittedTransaction = submitTransaction(signedTransaction);
         System.out.println(submittedTransaction);
 
         //wait for mining
@@ -72,8 +72,9 @@ public class TransactionTest {
         return (TransactionSignature) signer.createSignature(signable, secretKey);
     }
 
-    private Object submitTransaction(Object signedTransaction) {
-        return null;
+    private SubmissionResult submitTransaction(TransactionSignature signedTransaction) {
+        Submission submission = new Submission(signedTransaction.getSignedTransaction());
+        return HttpUtil.postJson("https://thor-test.arkane.network/transactions", submission, SubmissionResult.class);
     }
 
     private Object getStatus(Object submittedTransaction) {
