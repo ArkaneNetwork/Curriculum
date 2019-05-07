@@ -30,7 +30,7 @@ public class TransactionTest {
     }
 
     public void transact() throws InterruptedException {
-        VechainSecretKey key = loadWallet("0x3b6b0b1741629f066b44efd7d1f8fd73955a5c8cf904ce40f281aa0a38d50489");
+        VechainSecretKey key = loadWallet("<your_private_key>");
         System.out.println(key);
 
         TransactionSignature signedTransaction = generateTransaction(key);
