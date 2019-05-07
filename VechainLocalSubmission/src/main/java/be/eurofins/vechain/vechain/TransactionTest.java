@@ -43,10 +43,10 @@ public class TransactionTest {
         System.out.println("Waiting for transaction to be mined...");
         Thread.sleep(10000);
 
-        Object status = getStatus(submittedTransaction);
+        TransactionResult status = getStatus(submittedTransaction);
         System.out.println(status);
 
-        Object receipt = getReceipt(submittedTransaction);
+        ReceiptResult receipt = getReceipt(submittedTransaction);
         System.out.println(receipt);
     }
 
@@ -77,11 +77,11 @@ public class TransactionTest {
         return HttpUtil.postJson("https://thor-test.arkane.network/transactions", submission, SubmissionResult.class);
     }
 
-    private Object getStatus(Object submittedTransaction) {
-        return null;
+    private TransactionResult getStatus(SubmissionResult submittedTransaction) {
+        return HttpUtil.getJson("https://thor-test.arkane.network/transactions/" + submittedTransaction.getId(), TransactionResult.class);
     }
 
-    private Object getReceipt(Object submittedTransaction) {
-        return null;
+    private ReceiptResult getReceipt(SubmissionResult submittedTransaction) {
+        return HttpUtil.getJson("https://thor-test.arkane.network/transactions/" + submittedTransaction.getId() + "/receipt", ReceiptResult.class);
     }
 }
