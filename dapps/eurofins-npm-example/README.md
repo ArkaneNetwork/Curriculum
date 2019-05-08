@@ -1,5 +1,6 @@
 # TODO
 
+- install node/npm: https://nodejs.org/en/
 - Find the documentation of Web3
 - Find the documentation of the truffle-hdwallet-provider
 - Find rinkeby infura endpoint
