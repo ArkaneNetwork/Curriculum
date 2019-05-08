@@ -36,7 +36,7 @@ public class TransactionTest {
         TransactionSignature signedTransaction = generateTransaction(key);
         System.out.println(signedTransaction);
 
-        Object submittedTransaction = submitTransaction(signedTransaction);
+        SubmissionResult submittedTransaction = submitTransaction(signedTransaction);
         System.out.println(submittedTransaction);
 
         //wait for mining
@@ -72,8 +72,9 @@ public class TransactionTest {
         return (TransactionSignature) signer.createSignature(signable, secretKey);
     }
 
-    private Object submitTransaction(Object signedTransaction) {
-        return null;
+    private SubmissionResult submitTransaction(TransactionSignature signedTransaction) {
+        Submission submission = new Submission(signedTransaction.getSignedTransaction());
+        return HttpUtil.postJson("https://thor-test.arkane.network/transactions", submission, SubmissionResult.class);
     }
 
     private Object getStatus(Object submittedTransaction) {
