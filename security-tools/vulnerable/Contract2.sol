@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-contract Underflow {
+contract Contract2 {
 
     mapping(address => uint) balances;
 

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run --rm mythril/myth -d -a 0x768f3b7538C0285142D86e0A692A086b0f091d3F
+docker run --rm mythril/myth -d -a 0xe0038049982cFde24C9032EE3FCA5F01A106385B
