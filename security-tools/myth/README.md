@@ -1,0 +1,1 @@
+docker run mythril/myth -x the_contract.sol (--solv solidity_version)
